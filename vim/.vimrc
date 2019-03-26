@@ -125,7 +125,10 @@ set nu
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"hcl
+Plugin 'hashivim/vim-hashicorp-tools'
+
+"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 set clipboard=unnamed
 
@@ -142,3 +145,19 @@ Plugin 'fatih/vim-go'
 
 " copy & paste
 set paste
+
+set nocp
+set backspace=indent,eol,start
+
+" rego
+Plugin 'tsandall/vim-rego'
+let g:formatdef_rego = '"opa fmt"'
+let g:formatters_rego = ['rego']
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+au BufWritePre *.rego Autoformat
+
+" colorcolumn
+set colorcolumn=120
+"highlight ColorColumn ctermbg=52 guibg=#3f2087
+
