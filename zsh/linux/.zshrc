@@ -1,8 +1,10 @@
 export KUBE_EDITOR="vim"
 export PATH="$HOME/bin:$HOME/.cabal/bin:$PATH"
+export GIT_COMMITTER_EMAIL=marcin.niemira@gmail.com
+export GIT_COMMITTER_NAME="Marcin Niemira"
 
 alias cnt=cntlm
-
+alias v=vim
 alias k='kubectl'
 alias diff=colordiff 
 
