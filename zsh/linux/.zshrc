@@ -1,7 +1,14 @@
 export KUBE_EDITOR="vim"
-export PATH="$HOME/bin:$HOME/.cabal/bin:$PATH"
+
 export GIT_COMMITTER_EMAIL="marcin.niemira@gmail.com"
 export GIT_COMMITTER_NAME="Marcin Niemira"
+export GIT_AUTHOR_EMAIL="marcin.niemira@gmail.com"
+export GIT_AUTHOR_NAME="Marcin Niemira"
+export GIT_EDITOR="vim"
+
+export EDITOR=vim
+
+export PATH="$HOME/bin:$HOME/.cabal/bin:$PATH"
 
 alias v=vim
 alias k='kubectl'
@@ -110,12 +117,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/niemiram/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/niemiram/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/niemiram/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/niemiram/google-cloud-sdk/completion.zsh.inc'; fi
-if [ /Users/niemiram/google-cloud-sdk/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 eval $(thefuck --alias)
