@@ -1,3 +1,5 @@
+setxkbmap pl
+
 export KUBE_EDITOR="vim"
 
 export GIT_COMMITTER_EMAIL="marcin.niemira@gmail.com"
@@ -119,3 +121,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 eval $(thefuck --alias)
+
+source /usr/share/google-cloud-sdk/completion.zsh.inc
