@@ -1,20 +1,13 @@
-setxkbmap pl
-
+export EDITOR="vim"
 export KUBE_EDITOR="vim"
-
-export GIT_COMMITTER_EMAIL="marcin.niemira@gmail.com"
-export GIT_COMMITTER_NAME="Marcin Niemira"
-export GIT_AUTHOR_EMAIL="marcin.niemira@gmail.com"
-export GIT_AUTHOR_NAME="Marcin Niemira"
-export GIT_EDITOR="vim"
-
-export EDITOR=vim
-
 export PATH="$HOME/bin:$HOME/.cabal/bin:$PATH"
 
-alias v=vim
-alias k='kubectl'
-alias diff=colordiff 
+export FZF_DEFAULT_COMMAND="fd --type f"
+
+export HTTPS_PROXY=localhost:3128
+export HTTP_PROXY=localhost:3128
+export https_proxy=localhost:3128
+export http_proxy=localhost:3128
 
 ZSH_THEME="agnoster" # (this is one of the fancy ones)
 
@@ -22,7 +15,9 @@ ZSH_THEME="agnoster" # (this is one of the fancy ones)
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/n0npax/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
+
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -71,8 +66,6 @@ export ZSH="/home/n0npax/.oh-my-zsh"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
@@ -120,6 +113,33 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-eval $(thefuck --alias)
 
-source /usr/share/google-cloud-sdk/completion.zsh.inc
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '~/google-cloud-sdk/path.zsh.inc' ]; then . '~/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '~/google-cloud-sdk/completion.zsh.inc' ]; then . '~/google-cloud-sdk/completion.zsh.inc'; fi
+
+kubectl() {
+    if ! type __start_kubectl >/dev/null 2>&1; then
+        source <(command kubectl completion zsh)
+    fi
+
+    command kubectl "$@"
+}
+
+eval $(thefuck --alias)
+#HISTFILE="~/.zsh_history${RANDOM}"
+HIST_STAMPS="mm/dd/yyyy"
+
+alias pip-install="pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org"
+alias cnt=cntlm
+
+alias vim=/usr/local/bin/vim
+alias v=/usr/local/bin/vim
+alias k='kubectl'
+alias diff=colordiff 
+alias cat=bat
+alias ls="exa -G"
+alias kubectx="kubectx; check_env"
