@@ -1,0 +1,27 @@
+[user]
+	name = Marcin Niemira
+	email = marcin.niemira@gmail.com
+	signingkey = E7A23758CC53C951D57CD0805395D4A81A3FA475
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
+[core]
+	editor = vim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 227
+	frag = magenta bold
+	commit = 227 bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
