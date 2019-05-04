@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+check_prod_env() {
+  if kubectl config current-context | grep -q prod || gcloud config get-value project | grep -q prod; then
+    tmux select-pane -P 'bg=#701010'
+  else
+    tmux select-pane -P 'bg=#192436'
+  fi
+}
+
+check_prod_env
