@@ -1,13 +1,8 @@
 export EDITOR="vim"
 export KUBE_EDITOR="vim"
-export PATH="$HOME/bin:$HOME/.cabal/bin:$PATH"
+export PATH="$PATH:$HOME/bin:$HOME/.cabal/bin:$HOME/.cargo/bin:$HOME/go/bin"
 
 export FZF_DEFAULT_COMMAND="fd --type f"
-
-export HTTPS_PROXY=localhost:3128
-export HTTP_PROXY=localhost:3128
-export https_proxy=localhost:3128
-export http_proxy=localhost:3128
 
 ZSH_THEME="agnoster" # (this is one of the fancy ones)
 
@@ -80,9 +75,12 @@ plugins=(
   tig
   tmux
   z
+  kube-ps1
+  gcp-ps1
 )
 
 source $ZSH/oh-my-zsh.sh
+PROMPT=$PROMPT'$(gcp_ps1)$(kube_ps1) '
 
 # User configuration
 
@@ -115,12 +113,6 @@ source $ZSH/oh-my-zsh.sh
 
 
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '~/google-cloud-sdk/path.zsh.inc' ]; then . '~/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '~/google-cloud-sdk/completion.zsh.inc' ]; then . '~/google-cloud-sdk/completion.zsh.inc'; fi
-
 kubectl() {
     if ! type __start_kubectl >/dev/null 2>&1; then
         source <(command kubectl completion zsh)
@@ -136,10 +128,21 @@ HIST_STAMPS="mm/dd/yyyy"
 alias pip-install="pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org"
 alias cnt=cntlm
 
-alias vim=/usr/local/bin/vim
-alias v=/usr/local/bin/vim
+alias v=vim
 alias k='kubectl'
 alias diff=colordiff 
 alias cat=bat
 alias ls="exa -G"
-alias kubectx="kubectx; check_env"
+alias kubectx="kubectx"
+alias du=ncdu
+alias ping=prettyping
+
+alias pbcopy="xclip -sel clip"
+
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/n0npax/google-cloud-sdk/path.zsh.inc' ]; then . '/home/n0npax/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/n0npax/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/n0npax/google-cloud-sdk/completion.zsh.inc'; fi
