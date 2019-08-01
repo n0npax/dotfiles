@@ -1,4 +1,5 @@
 set nocompatible              " required
+set nu
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -41,12 +42,13 @@ au BufNewFile,BufRead *.py
 Plugin 'vim-scripts/indentpython.vim'
 set encoding=utf-8
 
-Bundle 'Valloric/YouCompleteMe'
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let g:ycm_python_binary_path = 'python3'
+Plugin 'ycm-core/YouCompleteMe'
+"let g:ycm_autoclose_preview_window_after_completion=1
+"map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 Plugin 'vim-syntastic/syntastic'
+
+" lint
 Plugin 'w0rp/ale'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
@@ -54,15 +56,13 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 let b:ale_linters = {
 			\ '*': ['remove_trailing_lines', 'trim_whitespace'],
-			\ 'python' : ['pyflakes', 'flake8', 'pylint']
+			\ 'python' : ['black', 'pylint']
 			\}
-"let b:ale_linters = ['pyflakes', 'flake8', 'pylint']
 
-let b:ale_fixers = ['eslint']
-"let b:ale_fix_on_save = 1
+let b:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
-"let g:ale_sign_column_always = 1
-"let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
 
 
 Plugin 'itchyny/lightline.vim'
@@ -77,15 +77,15 @@ let g:lightline#ale#indicator_ok = "\uf00c"
 let python_highlight_all=1
 syntax on
 
-Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 
-if has('gui_running')
-  set background=dark
-  colorscheme solarized
-else
-  colorscheme zenburn
-endif
+"Plugin 'jnurmine/Zenburn'
+"if has('gui_running')
+"  set background=dark
+"  colorscheme solarized
+"else
+"  colorscheme zenburn
+"endif
 
 call togglebg#map("<F5>")
 
@@ -121,8 +121,8 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 Plugin 'kien/ctrlp.vim'
 
-set nu
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
+
 Plugin 'airblade/vim-gitgutter'
 
 "hcl
@@ -161,3 +161,9 @@ au BufWritePre *.rego Autoformat
 set colorcolumn=120
 "highlight ColorColumn ctermbg=52 guibg=#3f2087
 
+highlight Cursor guifg=red guibg=green
+highlight iCursor guifg=red guibg=green
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
