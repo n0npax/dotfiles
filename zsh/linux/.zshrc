@@ -1,6 +1,6 @@
 export EDITOR="vim"
 export KUBE_EDITOR="vim"
-export PATH="$PATH:$HOME/bin:$HOME/.cabal/bin:$HOME/.cargo/bin:$HOME/go/bin"
+export PATH="$PATH:$HOME/bin:$HOME/.cabal/bin:$HOME/.cargo/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/bin:/home/linuxbrew/.linuxbrew/bin"
 
 export FZF_DEFAULT_COMMAND="fd --type f"
 
@@ -76,11 +76,10 @@ plugins=(
   tmux
   z
   kube-ps1
-  gcp-ps1
 )
 
 source $ZSH/oh-my-zsh.sh
-PROMPT=$PROMPT'$(gcp_ps1)$(kube_ps1) '
+PROMPT=$PROMPT'$(kube_ps1) '
 
 # User configuration
 
@@ -126,23 +125,22 @@ eval $(thefuck --alias)
 HIST_STAMPS="mm/dd/yyyy"
 
 alias pip-install="pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org"
-alias cnt=cntlm
+#alias cnt=cntlm
 
 alias v=vim
 alias k='kubectl'
 alias diff=colordiff 
-alias cat=bat
-alias ls="exa -G"
-alias kubectx="kubectx"
-alias du=ncdu
+#alias cat=bat
+#alias ls="exa -G"
+#alias kubectx="kubectx"
+#alias du=ncdu
 alias ping=prettyping
 
 alias pbcopy="xclip -sel clip"
-
-
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/n0npax/google-cloud-sdk/path.zsh.inc' ]; then . '/home/n0npax/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/n0npax/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/n0npax/google-cloud-sdk/completion.zsh.inc'; fi
+
