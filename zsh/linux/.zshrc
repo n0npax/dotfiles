@@ -134,8 +134,8 @@ alias diff=colordiff
 #alias ls="exa -G"
 #alias kubectx="kubectx"
 #alias du=ncdu
-alias ping=prettyping
-
+#alias ping=prettyping
+alias gocov='go test -coverprofile=coverage.out ./... && go tool cover -html=coverage.out'
 alias pbcopy="xclip -sel clip"
 
 # The next line updates PATH for the Google Cloud SDK.
