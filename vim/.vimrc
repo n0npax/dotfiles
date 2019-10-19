@@ -6,19 +6,11 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" add all your plugins here (note older versions of Vundle
-" used Bundle instead of Plugin)
-
-" ...
-
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
+
 filetype plugin indent on    " required
 
 " Enable folding
@@ -27,20 +19,6 @@ set foldlevel=120
 
 " Enable folding with the spacebar
 nnoremap <space> za
-
-Plugin 'tmhedberg/SimpylFold'
-let g:SimpylFold_docstring_preview=1
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=120 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
-
-Plugin 'vim-scripts/indentpython.vim'
-set encoding=utf-8
 
 Plugin 'ycm-core/YouCompleteMe'
 "let g:ycm_autoclose_preview_window_after_completion=1
@@ -54,16 +32,10 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-let b:ale_linters = {
-			\ '*': ['remove_trailing_lines', 'trim_whitespace'],
-			\ 'python' : ['black', 'pylint']
-			\}
-
 let b:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_sign_column_always = 1
 let g:airline#extensions#ale#enabled = 1
-
 
 Plugin 'itchyny/lightline.vim'
 set laststatus=2
@@ -125,9 +97,6 @@ Plugin 'kien/ctrlp.vim'
 
 Plugin 'airblade/vim-gitgutter'
 
-"hcl
-Plugin 'hashivim/vim-hashicorp-tools'
-
 "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 set clipboard=unnamed
@@ -136,30 +105,15 @@ highlight BadWhitespace ctermbg=red guibg=darkred
 
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-"yaml
-au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-"go
-Plugin 'fatih/vim-go'
-
 " copy & paste
 set paste
 
 set nocp
 set backspace=indent,eol,start
 
-" rego
-Plugin 'tsandall/vim-rego'
-let g:formatdef_rego = '"opa fmt"'
-let g:formatters_rego = ['rego']
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-au BufWritePre *.rego Autoformat
-
 " colorcolumn
-set colorcolumn=120
-"highlight ColorColumn ctermbg=52 guibg=#3f2087
+set colorcolumn=121
+highlight ColorColumn ctermbg=52 guibg=#3f2087
 
 highlight Cursor guifg=red guibg=green
 highlight iCursor guifg=red guibg=green
@@ -167,3 +121,9 @@ set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set guicursor+=n-v-c:blinkon0
 set guicursor+=i:blinkwait10
+
+" load config per language
+autocmd FileType tf,tfvars,hcl set filetype=hcl
+autocmd FileType rego set filetype=rego
+
+
