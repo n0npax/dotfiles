@@ -1,6 +1,6 @@
 export EDITOR="vim"
 export KUBE_EDITOR="vim"
-export PATH="$PATH:$HOME/bin:$HOME/.cabal/bin:$HOME/.cargo/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/bin:/home/linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:$HOME/bin:$HOME/.cabal/bin:$HOME/.cargo/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/bin:/home/linuxbrew/.linuxbrew/bin:/usr/share/bcc/tools"
 
 export FZF_DEFAULT_COMMAND="fd --type f"
 
@@ -11,7 +11,8 @@ ZSH_THEME="agnoster" # (this is one of the fancy ones)
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
+export GOROOT=$HOME/go
+export GOPATH=$HOME/workspace/go
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -143,4 +144,5 @@ if [ -f '/home/n0npax/google-cloud-sdk/path.zsh.inc' ]; then . '/home/n0npax/goo
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/n0npax/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/n0npax/google-cloud-sdk/completion.zsh.inc'; fi
-
+# added by travis gem
+[ -f /home/n0npax/.travis/travis.sh ] && source /home/n0npax/.travis/travis.sh
