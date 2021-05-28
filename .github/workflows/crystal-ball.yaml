@@ -22,4 +22,4 @@ jobs:
           org: ${{ github.repository_owner }}
           repoName: dotfiles
           issueNum: ${{ github.event.issue.number }}
-          labels: "invalid,crystall ball needed"
+          labels: invalid,crystall ball needed
