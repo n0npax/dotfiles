@@ -1,0 +1,25 @@
+name: crystall ball
+on:
+  issues:
+    types: [opened, edited]
+jobs:
+  fortune_teller:
+    runs-on: ubuntu-latest
+    name: Fortune teller
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Crystal Ball
+        # rm line below if you want to apply same rules for PR description
+        if: ${{ !github.event.issue.pull_request }}
+        uses: n0npax/crystal-ball@v0.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CRYSTAL_MATCH_REGEX_BAR: 'description:?\s*\Z'
+          CRYSTAL_NOMATCH_REGEX_FOO: '(\w+\s+){0,10}'
+          # COMMENT_MSG: blah blah blah
+        with:
+          org: ${{ github.repository_owner }}
+          repoName: dotfiles
+          issueNum: ${{ github.event.issue.number }}
+          labels: invalid,crystall ball needed
